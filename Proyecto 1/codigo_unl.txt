@@ -1,0 +1,92 @@
+@startuml
+' Entidades Principales
+class Pieza {
+    +String id
+    +String titulo
+    +Date anioCreacion
+    +String lugarCreacion
+    +String estado
+}
+
+class Pintura {
+    +String tecnica
+}
+
+class Escultura {
+    +String dimensiones
+    +String materiales
+    +Double peso
+    +Boolean necesitaElectricidad
+}
+
+class Autor {
+    +String idAutor
+    +String nombre
+    +Boolean esColectivo
+}
+
+class Propietario {
+    +String idPropietario
+    +String nombre
+    +String contacto
+}
+
+class Comprador {
+    +String idComprador
+    +String nombre
+    +String contacto
+    +Double valorMaximoCompras
+}
+
+class Empleado {
+    +String idEmpleado
+    +String nombre
+    +String rol
+}
+
+class Compra {
+    +String idCompra
+    +Date fecha
+    +List<Pieza> piezasCompradas
+}
+
+class Subasta {
+    +String idSubasta
+    +Date fechaInicio
+    +Date fechaFin
+    +List<Pieza> piezasSubastadas
+    +Double valorInicial
+    +Double valorMinimoOculto
+}
+
+class Oferta {
+    +String idOferta
+    +String idComprador
+    +String idSubasta
+    +Double valorOferta
+    +DateTime fechaHora
+}
+
+class Pago {
+    +String idPago
+    +String tipo
+    +Double monto
+    +DateTime fechaHora
+}
+
+' Relaciones
+Pieza <|-- Pintura
+Pieza <|-- Escultura
+Pieza "1" -- "1" Autor : tiene >
+Pieza "*" - "1" Propietario : pertenece a >
+Pieza "*" -- "*" Compra : comprada en 
+Comprador "1" -- "*" Compra : realiza >
+Pieza "*" -- "*" Subasta : subastada en >
+Subasta "1" -- "*" Oferta : recibe >
+Oferta "*" -- "1" Comprador : realizada por >
+Compra "*" -- "1" Pago : asociado a >
+
+Employee <|-- Administrador
+Empleado <|-- Cajero
+Empleado <|-- OtrosEmpleados
+@enduml
