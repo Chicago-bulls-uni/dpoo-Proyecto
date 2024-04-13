@@ -53,19 +53,52 @@ public class RegistroUser {
 		
 		
 	}
-	public static void main(String[] args) {
-        RegistroUser registro = new RegistroUser();
-        
-        // Datos del usuario de ejemplo
-        String username = "witrecx";
-        //String password = "12345";
-        // int level = 0;
-        
-        // Agregar el usuario a la base de datos
-        //registro.dataBaseAgregar(username, password, level);
-        
-        // Buscar el usuario para verificar que se haya agregado correctamente
-        registro.dataBaseBuscar(username);
+	
+	public void dataBaseModificiar(String txt_user, String txt_password, int txt_level ) {
+		try {
+
+			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
+			PreparedStatement pst = connector.prepareStatement("UPDATE users SET password = ?, level = ? WHERE user = " + txt_user);
+			
+			pst.setString(1, txt_password.trim());
+			pst.setInt(2, txt_level);
+			
+			pst.executeUpdate();
+			pst.close();
+			connector.close();
+			
+			System.out.println("modificación exitosa");
+			
+			
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			
+		}
+		
+	}
+	public void dataBaseEliminar(String txt_user) {
+		
+		try {
+			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
+			PreparedStatement pst = connector.prepareStatement("DELETE FROM users WHERE user = ?");
+			
+			pst.setString(1, txt_user.trim());
+			pst.executeUpdate();
+			pst.close();
+			connector.close();
+			
+			System.out.println("Eliminado exitosamente");
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
 	}
 	
 
