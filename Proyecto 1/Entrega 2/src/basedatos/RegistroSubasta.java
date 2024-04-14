@@ -34,22 +34,22 @@ public class RegistroSubasta {
 			e.printStackTrace();
 			}
 		}
-	public void dataBaseBuscar(String idPieza) {
+	public void dataBaseBuscar(int idPieza) {
 		
 		try {
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
-			PreparedStatement pst = connector.prepareStatement("SELECT * FROM objects WHERE user = ?");
+			PreparedStatement pst = connector.prepareStatement("SELECT * FROM objects WHERE idPieza = ?");
 			
-			pst.setString(1, idPieza);
+			pst.setInt(1, idPieza);
 			
 			ResultSet rs = pst.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println("fechaCreacion: " + rs.getString("fechaCreacion"));
-			    System.out.println("lugarCreacion: " + rs.getInt("lugarCreacion"));
+				System.out.println("fechaCreacion: " + rs.getInt("fechaCreacion"));
+			    System.out.println("lugarCreacion: " + rs.getString("lugarCreacion"));
 			    System.out.println("autor: " + rs.getString("autor"));
 			    System.out.println("tipo: " + rs.getString("tipo"));
-			    System.out.println("estado: " + rs.getString("estado"));
+			    System.out.println("estado: " + rs.getInt("estado"));
 			    System.out.println("dimensiones: " + rs.getString("dimensiones"));
 			    System.out.println("materiales: " + rs.getString("materiales"));
 			    System.out.println("necesitaElectricidad: " + rs.getBoolean("necesitaElectricidad"));
@@ -117,6 +117,10 @@ public class RegistroSubasta {
 	    }
 	}
 	
+	public static void main(String[] args) {
+		RegistroSubasta sub = new RegistroSubasta();
+		sub.dataBaseBuscar(1);
+	}
 	
 
 }
