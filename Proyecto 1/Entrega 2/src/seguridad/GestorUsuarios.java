@@ -1,3 +1,4 @@
+import basedatos.RegistroUser;
 public class GestorUsuarios {
     private RegistroUser registroUser;
 
