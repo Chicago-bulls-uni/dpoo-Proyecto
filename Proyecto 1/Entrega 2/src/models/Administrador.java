@@ -1,4 +1,4 @@
-package models;
+--package models;
 
 import seguridad.Usuario;
 import basedatos.RegistroSubasta;
@@ -24,7 +24,7 @@ public class Administrador extends Empleado{
             pieza.getEstado(),
             pieza.getDimensiones(),
             pieza.getMateriales(),
-            pieza.getNecesitaElectricidad(),
+            pieza.isNecesitaElectricidad(),
             pieza.getFechaIngresa(),
             pieza.getFechaVenta()
         );
@@ -51,7 +51,7 @@ public class Administrador extends Empleado{
             pieza.getEstado(),
             pieza.getDimensiones(),
             pieza.getMateriales(),
-            pieza.getNecesitaElectricidad(),
+            pieza.isNecesitaElectricidad(),
             pieza.getFechaIngresa(),
             pieza.getFechaVenta()
         );

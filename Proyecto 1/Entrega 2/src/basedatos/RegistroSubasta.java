@@ -6,31 +6,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import models.Autor;
 import models.Pieza;
 
 public class RegistroSubasta {
 	
 	
 	
-	public void dataBaseAgregar(int idPieza, int fechaCreacion, String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
+	public void dataBaseAgregar(int idPieza, Date date, String lugarCreacion, Autor autor, String tipo, String string, String dimensiones, String materiales, boolean necesitaElectricidad, Date date2, Date date3) {
 		try {
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); 
 			PreparedStatement pst = connector.prepareStatement("INSERT INTO objects (idPieza, fechaCreacion, lugarCreacion, autor, tipo, estado, dimensiones, materiales, necesitaElectricidad, fechaIngresa, fechaVenta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			
 			pst.setInt(1, idPieza);
-	        pst.setInt(2, fechaCreacion);
+	        pst.setInt(2, date);
 	        pst.setString(3, lugarCreacion);
 	        pst.setString(4, autor);
 	        pst.setString(5, tipo);
-	        pst.setInt(6, estado);
+	        pst.setInt(6, string);
 	        pst.setString(7, dimensiones);
 	        pst.setString(8, materiales);
 	        pst.setBoolean(9, necesitaElectricidad);
-	        pst.setString(10, fechaIngresa);
-	        pst.setString(11, fechaVenta);
+	        pst.setString(10, date2);
+	        pst.setString(11, date3);
 			
 			
 			pst.executeUpdate();	
