@@ -58,10 +58,13 @@ public class Administrador extends Empleado{
     }
     
     public void verificarCompradorYOferta() {
+    	// Verificar si el usario esta dentro de la base de datos
     	
     }
     
     public void verificarCompradorSubasta() {
+    	// Verificar historial
+    	// If comprador historial == 0 && piezaValor > alto {no puede comprar} 
     	
     }
     
@@ -74,9 +77,6 @@ public class Administrador extends Empleado{
 	
 	
 	
-	
-	//+verificarCompradorYOferta()
-	//+ verificarCompradorSubasta()
 	
 	
 	//+ setLimiteCompras()

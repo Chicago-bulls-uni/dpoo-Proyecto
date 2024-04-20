@@ -8,6 +8,15 @@ public class Cajero extends Empleado{
 		super(idEmpleadoP, nombreP, usuarioP);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public boolean registrarPago() {
+		
+		if () {
+			return true;
+			
+		}else {
+			return false;}
+	}
 	//+ Cajero ()
 	//+ registrarPago()
 
