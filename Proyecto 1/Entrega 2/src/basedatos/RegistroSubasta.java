@@ -5,8 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.Pieza;
 
 public class RegistroSubasta {
+	
+	
+	
 	public void dataBaseAgregar(int idPieza, int fechaCreacion, String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
 		try {
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); 
@@ -34,46 +41,43 @@ public class RegistroSubasta {
 			e.printStackTrace();
 			}
 		}
-	public void dataBaseBuscar(int idPieza) {
-		
-		try {
-			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
-			PreparedStatement pst = connector.prepareStatement("SELECT * FROM objects WHERE idPieza = ?");
-			
-			pst.setInt(1, idPieza);
-			
-			ResultSet rs = pst.executeQuery();
-			
-			if (rs.next()) {
-				System.out.println("fechaCreacion: " + rs.getInt("fechaCreacion"));
-			    System.out.println("lugarCreacion: " + rs.getString("lugarCreacion"));
-			    System.out.println("autor: " + rs.getString("autor"));
-			    System.out.println("tipo: " + rs.getString("tipo"));
-			    System.out.println("estado: " + rs.getInt("estado"));
-			    System.out.println("dimensiones: " + rs.getString("dimensiones"));
-			    System.out.println("materiales: " + rs.getString("materiales"));
-			    System.out.println("necesitaElectricidad: " + rs.getBoolean("necesitaElectricidad"));
-			    System.out.println("fechaIngresa: " + rs.getString("fechaIngresa"));
-			    System.out.println("fechaVenta: " + rs.getString("fechaVenta"));
-			}else {
-				System.out.println("Error registro no encontrado");
-			}
-			
-		rs.close();
-		pst.close();
-		connector.close();
-			
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-			
-		}
-		
-		
-		
-		
-		
-	}
+	public List<Pieza> dataBaseBuscar(int idPieza) {
+        List<Pieza> resultados = new ArrayList<>();
+
+        try {
+            Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
+            PreparedStatement pst = connector.prepareStatement("SELECT * FROM objects WHERE idPieza = ?");
+
+            pst.setInt(1, idPieza);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+            	Pieza objeto = new Pieza();
+                objeto.setIdPieza(rs.getInt("idPieza"));
+                objeto.setFechaCreacion(rs.getInt("fechaCreacion"));
+                objeto.setLugarCreacion(rs.getString("lugarCreacion"));
+                objeto.setAutor(rs.getString("autor"));
+                objeto.setTipo(rs.getString("tipo"));
+                objeto.setEstado(rs.getInt("estado"));
+                objeto.setDimensiones(rs.getString("dimensiones"));
+                objeto.setMateriales(rs.getString("materiales"));
+                objeto.setNecesitaElectricidad(rs.getBoolean("necesitaElectricidad"));
+                objeto.setFechaIngresa(rs.getString("fechaIngresa"));
+                objeto.setFechaVenta(rs.getString("fechaVenta"));
+                
+                resultados.add(objeto);
+            }
+
+            rs.close();
+            pst.close();
+            connector.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultados;
+    }
 	
 	public void dataBaseModificar(int idPieza, int fechaCreacion, String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
 	    try {

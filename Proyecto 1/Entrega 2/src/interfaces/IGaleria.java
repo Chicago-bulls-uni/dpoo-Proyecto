@@ -1,5 +1,5 @@
 package interfaces;
 
-public class IGaleria {
+public interface IGaleria {
 
 }

@@ -1,5 +1,5 @@
 package interfaces;
 
-public class IMain {
+public interface IMain {
 
 }
