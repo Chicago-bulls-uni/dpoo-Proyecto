@@ -29,7 +29,7 @@ public class RegistroSubasta {
 			pst.executeUpdate();	
 			pst.close();
             connector.close();
-			
+			System.out.println("Registro completado: " + idPieza);
 		}catch(SQLException e) {
 			e.printStackTrace();
 			}
@@ -95,6 +95,7 @@ public class RegistroSubasta {
 	        pst.executeUpdate();
 	        pst.close();
 	        connector.close();
+	        System.out.println("Elemento modificado con exito: " + idPieza);
 	    } catch(SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -112,6 +113,7 @@ public class RegistroSubasta {
 	       
 	        pst.close();
 	        connector.close();
+	        System.out.println("Elemento" + idPieza + "eliminado" );
 	    } catch(SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -119,7 +121,8 @@ public class RegistroSubasta {
 	
 	public static void main(String[] args) {
 		RegistroSubasta sub = new RegistroSubasta();
-		sub.dataBaseBuscar(1);
+		sub.dataBaseModificar(10, 20240610, "bogota", "diego", "escultura", 4, "200x200", "madera,papel,tierra", false, "20230414", "N/A");
+		sub.dataBaseBuscar(10);
 	}
 	
 

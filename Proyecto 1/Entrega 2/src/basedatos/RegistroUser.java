@@ -61,7 +61,7 @@ public class RegistroUser {
 		try {
 
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
-			PreparedStatement pst = connector.prepareStatement("UPDATE users SET password = ?, level = ? WHERE user = " + txt_user);
+			PreparedStatement pst = connector.prepareStatement("UPDATE users SET password = ?, level = ? WHERE user = " + txt_user.trim());
 			
 			pst.setString(1, txt_password.trim());
 			pst.setInt(2, txt_level);
@@ -69,7 +69,7 @@ public class RegistroUser {
 			pst.executeUpdate();
 			pst.close();
 			connector.close();
-			
+				
 			System.out.println("modificación exitosa");
 			
 			
@@ -102,6 +102,13 @@ public class RegistroUser {
 		
 		
 		
+	}
+	public static void main(String[] args) {
+		RegistroUser us = new RegistroUser();
+		us.dataBaseAgregar("seb", "0a7p0", 1);
+		us.dataBaseBuscar("seb");
+		us.dataBaseModificiar("seb", "paco", 0);
+		us.dataBaseBuscar("seb");
 	}
 	
 
