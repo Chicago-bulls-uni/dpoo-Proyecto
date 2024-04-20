@@ -125,5 +125,6 @@ public class RegistroSubasta {
 		sub.dataBaseBuscar(10);
 	}
 	
+		
 
 }
