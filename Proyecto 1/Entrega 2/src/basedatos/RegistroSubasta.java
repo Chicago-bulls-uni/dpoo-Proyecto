@@ -27,12 +27,13 @@ public class RegistroSubasta {
 	        pst.setString(3, lugarCreacion);
 	        pst.setString(4, autor);
 	        pst.setString(5, tipo);
-	        pst.setInt(6, string);
+	        pst.setString(6, string);
 	        pst.setString(7, dimensiones);
 	        pst.setString(8, materiales);
 	        pst.setBoolean(9, necesitaElectricidad);
-	        pst.setString(10, date2);
-	        pst.setString(11, date3);
+	        pst.setDate(10, (java.sql.Date) date2);
+	        pst.setDate(11, (java.sql.Date) date3);
+	        
 			
 			
 			pst.executeUpdate();	
@@ -55,9 +56,9 @@ public class RegistroSubasta {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-            	Pieza objeto = new Pieza();
+            	Pieza objeto = new Pieza(idPieza, false, null, null, idPieza, null, null);
                 objeto.setIdPieza(rs.getInt("idPieza"));
-                objeto.setFechaCreacion(rs.getInt("fechaCreacion"));
+                objeto.setFechaCreacion(rs.getDate("fechaCreacion"));
                 objeto.setLugarCreacion(rs.getString("lugarCreacion"));
                 objeto.setAutor(rs.getString("autor"));
                 objeto.setTipo(rs.getString("tipo"));
