@@ -20,7 +20,7 @@ public class Pieza {
 	private String tipo;
     private String estado;
     private String dimensiones;
-    private String materiales;
+    private ArrayList<String> materiales;
     private boolean necesitaElectricidad;
     private Date fechaIngresa;
     private Date fechaVenta;
@@ -94,12 +94,12 @@ public class Pieza {
 	}
 
 
-	public String getMateriales() {
+	public ArrayList<String> getMateriales() {
 		return materiales;
 	}
 
 
-	public void setMateriales(String materiales) {
+	public void setMateriales(ArrayList<String> materiales) {
 		this.materiales = materiales;
 	}
 

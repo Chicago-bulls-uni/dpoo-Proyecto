@@ -25,7 +25,9 @@ public class Escultura extends Pieza{
 	public void setDimenciones(Dimensiones dimenciones) {
 		this.dimenciones = dimenciones;
 	}
+	
 
+	
 	public ArrayList<String> getMateriales() {
 		return materiales;
 	}
