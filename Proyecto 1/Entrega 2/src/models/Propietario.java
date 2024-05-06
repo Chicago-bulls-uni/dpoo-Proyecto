@@ -1,38 +1,33 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Propietario {
+public class Propietario extends Comprador {
 	
-	private int idPropietario;
-	private String nombre;
+	
+	
 	private String contacto;
 	private double limiteCompra;
 	private List<Pieza> historialCompras;
+	private List<Pieza> Piezasadquiridad;
 
 	
 	
-	public Propietario (int idPropietarioP, String nombreP, String contactoP, double limiteCompraP, List<Pieza> historialComprasP) {
-		this.idPropietario= idPropietarioP;
-		this.nombre= nombreP;
-		this.contacto= contactoP;
+	public Propietario ( String nombreP, String contactoP,  Compra compraP , double limiteCompraP, boolean verificadoP, int idPropietarioP, List<Pieza> historialComprasP) {
+		super(idPropietarioP,nombreP,contactoP, compraP,limiteCompraP,verificadoP);
+		
+		
+		this.Piezasadquiridad= new ArrayList<Pieza>();
+		this.historialCompras= new ArrayList<Pieza>();
 		this.limiteCompra=limiteCompraP;
 		this.historialCompras= historialComprasP;
 		
 	}
+	
 
-
-
-	public int getIdPropietario() {
-		return idPropietario;
-	}
-
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
+	
+	
 
 
 	public String getContacto() {
@@ -52,16 +47,10 @@ public class Propietario {
 	}
 
 
-
-	public void setIdPropietario(int idPropietario) {
-		this.idPropietario = idPropietario;
+	public List<Pieza> getPiezasadquiridad() {
+		return Piezasadquiridad;
 	}
 
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
 
 

@@ -2,13 +2,13 @@ package models;
 
 public class Autor {
 	
-	private int idAutor;
+	
 	private String nombre;
 	private boolean esColectivo;
 	
-	public Autor (int id , String nombreP, boolean esColectivoP) {
+	public Autor ( String nombreP, boolean esColectivoP) {
 		
-		this.idAutor= id;
+		
 		this.nombre= nombreP;
 		this.esColectivo= esColectivoP;
 	}

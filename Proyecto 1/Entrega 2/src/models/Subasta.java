@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Subasta {
@@ -10,11 +11,11 @@ public class Subasta {
 	 private List<Oferta> ofertas;
 	 
 	 
-	 public Subasta (int idSubastaP, List<Pieza> piezasP , double valorMinimoP, List<Oferta> ofertasP) {
+	 public Subasta (int idSubastaP, double valorMinimoP) {
 		 this.idSubasta=idSubastaP;
-		 this.piezas=piezasP;
+		 this.piezas= new ArrayList<Pieza>();
 		 this.valorMinimo=valorMinimoP;
-		 this.ofertas= ofertasP;
+		 this.ofertas= new ArrayList<Oferta>();
 	 }
 
 

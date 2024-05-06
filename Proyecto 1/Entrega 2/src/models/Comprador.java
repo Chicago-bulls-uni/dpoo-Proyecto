@@ -7,15 +7,15 @@ public class Comprador {
 	private int idComprador;
 	private String nombre;
 	private String contacto;
-	private List<Compra> comprasRealizadas;
+	
 	private Compra compra;
 	private double limiteCompra;
 	private boolean verificado;
 	
-	public Comprador (int idCompradorP, String nombreP, String contactoP, List<Compra> comprasRealizadasP, Compra compraP , double limiteCompraP, boolean verificadoP) {
+	public Comprador (int idCompradorP, String nombreP, String contactoP, Compra compraP , double limiteCompraP, boolean verificadoP) {
 		this.setIdComprador(idCompradorP);
 		this.setNombre(nombreP);
-		this.setComprasRealizadas(comprasRealizadasP);
+		
 		this.setContacto(contactoP);
 		this.setCompra(compraP);
 		this.setLimiteCompra(limiteCompraP);

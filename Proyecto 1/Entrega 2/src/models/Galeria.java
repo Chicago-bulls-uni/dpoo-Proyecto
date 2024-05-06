@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Galeria {
@@ -13,7 +14,7 @@ public class Galeria {
 		
 		this.empleados= empleadosP;
 		this.historialPiezas=historialPiezasP;
-		this.setSubasta(subastaP);
+		subasta=new ArrayList<Subasta>();
 	}
 
 	public List<Empleado> getEmpleados() {
@@ -36,8 +37,11 @@ public class Galeria {
 		return subasta;
 	}
 
-	public void setSubasta(List<Subasta> subastaP) {
-		this.subasta = subastaP;
+	public void setSubasta(int id, double valorminimo) {
+		Subasta newsub= new Subasta(id,valorminimo);
+		this.getSubasta().add(newsub);
+		
+		
 	}
 	
 	//registrarPieza()

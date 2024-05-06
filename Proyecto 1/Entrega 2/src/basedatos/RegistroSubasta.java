@@ -8,19 +8,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import enums.TecnicaPintura;
+import models.Autor;
 import models.Pieza;
+import models.Pintura;
 
 public class RegistroSubasta {
 	
 	
 	
-	public void dataBaseAgregar(int idPieza, int fechaCreacion, String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
+	public void dataBaseAgregar(int idPieza, int fechaCreacion,String Nombre , String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
 		try {
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); 
 			PreparedStatement pst = connector.prepareStatement("INSERT INTO objects (idPieza, fechaCreacion, lugarCreacion, autor, tipo, estado, dimensiones, materiales, necesitaElectricidad, fechaIngresa, fechaVenta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			
 			pst.setInt(1, idPieza);
+			pst.setString(2, Nombre);
 	        pst.setInt(2, fechaCreacion);
 	        pst.setString(3, lugarCreacion);
 	        pst.setString(4, autor);
@@ -36,7 +40,25 @@ public class RegistroSubasta {
 			pst.executeUpdate();	
 			pst.close();
             connector.close();
+            
 			System.out.println("Registro completado: " + idPieza);
+			Autor author= new Autor(autor,false);
+			if (tipo.equals("Pintura")) {
+				TecnicaPintura tec= TecnicaPintura.(tipo)
+				Pintura BB= new Pintura(idPieza,false, author,  Nombre, fechaCreacion,  lugarCreacion, tipo);
+			} else if (tipo.equals("Video")) {
+			    // Code for Type2
+			} else if (tipo.equals("Impresion")) {
+			    // Code for Type3
+			} else if (tipo.equals("Fotorgrafia")) {
+			    // Code for Type4
+			} else if (tipo.equals("Escultura")) {
+			    // Code for Type5
+			} else {
+			    // Code for unknown type
+			}
+			 
+			Pintura BB= new Pieza(idPieza,false, author,  Nombre, fechaCreacion,  lugarCreacion, String tipoPieza)}
 		}catch(SQLException e) {
 			e.printStackTrace();
 			}
