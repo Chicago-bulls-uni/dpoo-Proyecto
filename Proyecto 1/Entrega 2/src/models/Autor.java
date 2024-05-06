@@ -13,9 +13,7 @@ public class Autor {
 		this.esColectivo= esColectivoP;
 	}
 
-	public int getIdAutor() {
-		return idAutor;
-	}
+	
 
 	public String getNombre() {
 		return nombre;
@@ -25,10 +23,7 @@ public class Autor {
 		return esColectivo;
 	}
 
-	public void setIdAutor(int idAutor) {
-		this.idAutor = idAutor;
-	}
-
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

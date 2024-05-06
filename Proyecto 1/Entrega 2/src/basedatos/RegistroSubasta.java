@@ -45,7 +45,7 @@ public class RegistroSubasta {
 			System.out.println("Registro completado: " + idPieza);
 			Autor author= new Autor(autor,false);
             if (tipo.equals("Pintura")) {
-                TecnicaPintura tec= TecnicaPintura.(tipo)
+                TecnicaPintura tec= TecnicaPintura.(tipo);
                 Pintura BB= new Pintura(idPieza,false, author,  Nombre, fechaCreacion,  lugarCreacion, tipo);
             } else if (tipo.equals("Video")) {
                 // Code for Type2

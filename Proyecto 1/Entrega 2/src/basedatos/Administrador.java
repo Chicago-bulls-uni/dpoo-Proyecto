@@ -67,11 +67,78 @@ public class Administrador extends Empleado{
     }
     
     public void verificarCompradorSubasta() {
-    	// Verificar historial
-    	// If comprador historial == 0 && piezaValor > alto {no puede comprar} 
+		// Verificar si el usuario esta dentro de la base de datos
     	
-    }
-    
+
+	}
+
+	public void verificarCompradorOferta() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorPago() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorRetiro() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorRegistro() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorActualizar() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorEliminar() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorBuscar() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorVerificar() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorLimite() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorLimiteCompras() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void verificarCompradorActualizarLimiteCompras() {
+		// Verificar si el usuario esta dentro de la base de datos
+
+	}
+
+	public void setComprador() {
+		// TODO
+	}
+
+	public void setLimiteCompras() {
+		// TODO
+	}
+	
+	public void actualizarLimiteCompras() {
+        // TODO
+		
+	}
    
     
 
@@ -83,8 +150,4 @@ public class Administrador extends Empleado{
 	
 	
 	
-	//+ setLimiteCompras()
-	//+ actualizarLimiteCompras()
-
-
-
+	

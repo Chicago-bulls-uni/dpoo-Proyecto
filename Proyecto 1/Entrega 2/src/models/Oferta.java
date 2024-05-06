@@ -14,9 +14,7 @@ public class Oferta {
 		this.montoOfrecido=montoOfrecidoP;
 	}
 
-	public int getIdOferta() {
-		return idOferta;
-	}
+	
 
 	public Subasta getSubasta() {
 		return subasta;
@@ -30,9 +28,7 @@ public class Oferta {
 		return montoOfrecido;
 	}
 
-	public void setIdOferta(int idOferta) {
-		this.idOferta = idOferta;
-	}
+	
 
 	public void setSubasta(Subasta subasta) {
 		this.subasta = subasta;

@@ -6,10 +6,17 @@ public class Operador extends Empleado{
 
 	public Operador(int idEmpleadoP, String nombreP, Usuario usuarioP) {
 		super(idEmpleadoP, nombreP, usuarioP);
-		// TODO Auto-generated constructor stub
+		
+		this.setIdEmpleado(idEmpleadoP);
+		this.setNombre(nombreP);
+		this.setUsuario(usuarioP);
 	}
-	//+ Operador ()
-	//+ registrarMovimientosSubasta()
 	
+	public void registrarMovimientosSubasta() {
+		//TODO
+
+	}
+	
+		
 
 }

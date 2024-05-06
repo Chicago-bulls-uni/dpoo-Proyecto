@@ -70,5 +70,8 @@ public class Compra {
 	public void setMonto(double monto) {
 		this.monto = monto;
 	}
-	
+
+	public double calcularTotal() {
+		return 0; //TODO
+	}
 }
