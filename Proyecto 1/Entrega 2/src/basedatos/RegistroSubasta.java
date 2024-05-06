@@ -23,7 +23,7 @@ public class RegistroSubasta {
 			
 			
 			pst.setInt(1, idPieza);
-	        pst.setInt(2, date);
+	        pst.setDate(2, (java.sql.Date) date);
 	        pst.setString(3, lugarCreacion);
 	        pst.setString(4, autor);
 	        pst.setString(5, tipo);
@@ -33,6 +33,16 @@ public class RegistroSubasta {
 	        pst.setBoolean(9, necesitaElectricidad);
 	        pst.setDate(10, (java.sql.Date) date2);
 	        pst.setDate(11, (java.sql.Date) date3);
+
+			
+
+
+
+
+
+
+
+
 	        
 			
 			
@@ -66,8 +76,8 @@ public class RegistroSubasta {
                 objeto.setDimensiones(rs.getString("dimensiones"));
                 objeto.setMateriales(rs.getString("materiales"));
                 objeto.setNecesitaElectricidad(rs.getBoolean("necesitaElectricidad"));
-                objeto.setFechaIngresa(rs.getString("fechaIngresa"));
-                objeto.setFechaVenta(rs.getString("fechaVenta"));
+                objeto.setFechaIngresa(rs.getDate("fechaIngresa"));
+                objeto.setFechaVenta(rs.getDate("fechaVenta"));
                 
                 resultados.add(objeto);
             }

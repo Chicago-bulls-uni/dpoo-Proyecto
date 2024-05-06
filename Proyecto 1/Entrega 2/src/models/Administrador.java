@@ -1,4 +1,4 @@
---package models;
+package models;
 
 import seguridad.Usuario;
 import basedatos.RegistroSubasta;
@@ -42,7 +42,7 @@ public class Administrador extends Empleado{
 
    
     public void actualizarPiezaInventario(Pieza pieza) {
-        registroSubasta.dataBaseModificar(
+        registroSubasta.dataBaseAgregar(
             pieza.getIdPieza(),
             pieza.getFechaCreacion(),
             pieza.getLugarCreacion(),
@@ -59,6 +59,7 @@ public class Administrador extends Empleado{
     
     public void verificarCompradorYOferta() {
     	// Verificar si el usario esta dentro de la base de datos
+    	
     	
     }
     
