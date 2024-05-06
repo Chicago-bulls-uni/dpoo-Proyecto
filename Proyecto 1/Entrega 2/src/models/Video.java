@@ -10,7 +10,7 @@ public class Video extends Pieza{
 	
 	public Video(int idPiezaP, boolean bloqueadaP, Autor autorP, String tituloP, int anioP, String lugarCreacionP,
 			String tipoPiezaP, int duracionMinutosP, TipoVideo tipoP) {
-		super(idPiezaP, bloqueadaP, autorP, tituloP, anioP, lugarCreacionP, tipoPiezaP);
+		super(idPiezaP, bloqueadaP, autorP, tituloP, anioP, lugarCreacionP, tipoPiezaP );
 		this.duracionMinutos = duracionMinutosP;
 		this.tipo = tipoP;
 		this.setNecesitaElectricidad(true);
