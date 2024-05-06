@@ -9,14 +9,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import enums.TecnicaPintura;
 import models.Autor;
 import models.Pieza;
+import models.Pintura;
 
 public class RegistroSubasta {
 	
 	
 	
-	public void dataBaseAgregar(int idPieza, Date date, String lugarCreacion, Autor autor, String tipo, String string, String dimensiones, String materiales, boolean necesitaElectricidad, Date date2, Date date3) {
+	public void dataBaseAgregar(int idPieza, Date date, String lugarCreacion, String autor, String tipo, String string, String dimensiones, String materiales, boolean necesitaElectricidad, Date date2, Date date3) {
 		try {
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); 
 			PreparedStatement pst = connector.prepareStatement("INSERT INTO objects (idPieza, fechaCreacion, lugarCreacion, autor, tipo, estado, dimensiones, materiales, necesitaElectricidad, fechaIngresa, fechaVenta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -41,6 +43,21 @@ public class RegistroSubasta {
 			pst.close();
             connector.close();
 			System.out.println("Registro completado: " + idPieza);
+			Autor author= new Autor(autor,false);
+            if (tipo.equals("Pintura")) {
+                TecnicaPintura tec= TecnicaPintura.(tipo)
+                Pintura BB= new Pintura(idPieza,false, author,  Nombre, fechaCreacion,  lugarCreacion, tipo);
+            } else if (tipo.equals("Video")) {
+                // Code for Type2
+            } else if (tipo.equals("Impresion")) {
+                // Code for Type3
+            } else if (tipo.equals("Fotorgrafia")) {
+                // Code for Type4
+            } else if (tipo.equals("Escultura")) {
+                // Code for Type5
+            } else {
+                // Code for unknown type
+            }
 		}catch(SQLException e) {
 			e.printStackTrace();
 			}
@@ -87,23 +104,38 @@ public class RegistroSubasta {
 	    try {
 	        Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); 
 	        PreparedStatement pst = connector.prepareStatement("UPDATE objects SET fechaCreacion = ?, lugarCreacion = ?, autor = ?, tipo = ?, estado = ?, dimensiones = ?, materiales = ?, necesitaElectricidad = ?, fechaIngresa = ?, fechaVenta = ? WHERE idPieza = " + idPieza);
-
-	        pst.setInt(1, fechaCreacion);
-	        pst.setString(2, lugarCreacion);
-	        pst.setString(3, autor);
-	        pst.setString(4, tipo);
-	        pst.setInt(5, estado);
-	        pst.setString(6, dimensiones);
-	        pst.setString(7, materiales);
-	        pst.setBoolean(8, necesitaElectricidad);
-	        pst.setString(9, fechaIngresa);
-	        pst.setString(10, fechaVenta);
+            pst.setInt(1,idPieza);
+	        pst.setInt(2, fechaCreacion);
+	        pst.setString(3, lugarCreacion);
+	        pst.setString(4, autor);
+	        pst.setString(5, tipo);
+	        pst.setInt(6, estado);
+	        pst.setString(7, dimensiones);
+	        pst.setString(8, materiales);
+	        pst.setBoolean(9, necesitaElectricidad);
+	        pst.setString(10, fechaIngresa);
+	        pst.setString(11, fechaVenta);
 	       
 
 	        pst.executeUpdate();
 	        pst.close();
 	        connector.close();
 	        System.out.println("Elemento modificado con exito: " + idPieza);
+	        Autor author= new Autor(autor,false);
+            if (tipo.equals("Pintura")) {
+                TecnicaPintura tec= TecnicaPintura.(tipo);
+                Pintura BB= new Pintura(idPieza,false, author,  Nombre, fechaCreacion,  lugarCreacion, tipo);
+            } else if (tipo.equals("Video")) {
+                // Code for Type2
+            } else if (tipo.equals("Impresion")) {
+                // Code for Type3
+            } else if (tipo.equals("Fotorgrafia")) {
+                // Code for Type4
+            } else if (tipo.equals("Escultura")) {
+                // Code for Type5
+            } else {
+                // Code for unknown type
+            }
 	    } catch(SQLException e) {
 	        e.printStackTrace();
 	    }

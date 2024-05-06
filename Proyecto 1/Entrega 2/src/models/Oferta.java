@@ -2,13 +2,13 @@ package models;
 
 public class Oferta {
 	
-	private int idOferta;
+	
 	private Subasta subasta;
 	private Comprador comprador;
 	private double montoOfrecido;
 	
-	public Oferta (int idOfertaP , Subasta subastaP, Comprador compradorP, double montoOfrecidoP) {
-		this.idOferta= idOfertaP;
+	public Oferta ( Subasta subastaP, Comprador compradorP, double montoOfrecidoP) {
+		
 		this.subasta= subastaP;
 		this.comprador=compradorP;
 		this.montoOfrecido=montoOfrecidoP;

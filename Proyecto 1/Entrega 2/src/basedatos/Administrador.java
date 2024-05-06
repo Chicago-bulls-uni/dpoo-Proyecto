@@ -1,8 +1,11 @@
-package models;
+package basedatos;
 
 import seguridad.Usuario;
-import basedatos.RegistroSubasta;
+
 import java.util.List;
+
+import models.Empleado;
+import models.Pieza;
 
 public class Administrador extends Empleado{
 
