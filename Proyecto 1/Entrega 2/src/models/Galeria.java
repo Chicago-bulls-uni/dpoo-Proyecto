@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import basedatos.RegistroSubasta;
+
 public class Galeria {
 	
 	
@@ -44,8 +46,26 @@ public class Galeria {
 		
 	}
 	
-	//registrarPieza()
-	// confirmarVenta()
-	//devolverPieza()
+
+	public void registrarPieza() {
+		//TODO
+		
+		
+		
+		
+	}
+
+	public void retirarPieza(int idPieza) {
+		RegistroSubasta registroSubasta = new RegistroSubasta();
+		registroSubasta.dataBaseEliminar(idPieza);
+	}
+
+	
+
+	public void confirmarVenta() {
+		// TODO
+    }
+
+	
 	
 }

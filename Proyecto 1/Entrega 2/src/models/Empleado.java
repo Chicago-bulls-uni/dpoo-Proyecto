@@ -12,10 +12,10 @@ public class Empleado {
 	
 	public Empleado (int idEmpleadoP, String nombreP, //RolEmpleado rolP
 			 Usuario usuarioP) {
-		this.idEmpleado=idEmpleadoP;
-		this.nombre= nombreP;
+		this.idEmpleado = idEmpleadoP;
+		this.nombre = nombreP;
 		//this.rol= rolP;
-		this.usuario= usuarioP;
+		this.usuario = usuarioP;
 		
 	}
 
@@ -55,5 +55,6 @@ public class Empleado {
 	//TODO
 	//+ gestionarPiezas(): void
 	//+ gestionarCompras(): void
-	//+ gestionarPropietarios(): void
+	//+ gestionarPropietarios(): void 
+	// Esto ^^^^ creo que ya el propio admin, o operador podría gestionarlo si necesidad de volver a hacer las funciones
 }

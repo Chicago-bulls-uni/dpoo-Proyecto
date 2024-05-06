@@ -24,7 +24,7 @@ public class Administrador extends Empleado{
             pieza.getEstado(),
             pieza.getDimensiones(),
             pieza.getMateriales(),
-            pieza.getNecesitaElectricidad(),
+            pieza.isNecesitaElectricidad(),
             pieza.getFechaIngresa(),
             pieza.getFechaVenta()
         );
@@ -42,7 +42,7 @@ public class Administrador extends Empleado{
 
    
     public void actualizarPiezaInventario(Pieza pieza) {
-        registroSubasta.dataBaseModificar(
+        registroSubasta.dataBaseAgregar(
             pieza.getIdPieza(),
             pieza.getFechaCreacion(),
             pieza.getLugarCreacion(),
@@ -51,17 +51,21 @@ public class Administrador extends Empleado{
             pieza.getEstado(),
             pieza.getDimensiones(),
             pieza.getMateriales(),
-            pieza.getNecesitaElectricidad(),
+            pieza.isNecesitaElectricidad(),
             pieza.getFechaIngresa(),
             pieza.getFechaVenta()
         );
     }
     
     public void verificarCompradorYOferta() {
+    	// Verificar si el usario esta dentro de la base de datos
+    	
     	
     }
     
     public void verificarCompradorSubasta() {
+    	// Verificar historial
+    	// If comprador historial == 0 && piezaValor > alto {no puede comprar} 
     	
     }
     
@@ -74,9 +78,6 @@ public class Administrador extends Empleado{
 	
 	
 	
-	
-	//+verificarCompradorYOferta()
-	//+ verificarCompradorSubasta()
 	
 	
 	//+ setLimiteCompras()

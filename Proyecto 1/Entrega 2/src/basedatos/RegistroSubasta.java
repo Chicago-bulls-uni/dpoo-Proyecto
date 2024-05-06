@@ -6,9 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+<<<<<<< HEAD
 import enums.TecnicaPintura;
+=======
+>>>>>>> 6d705fc1417818104609c9017221917e284255fb
 import models.Autor;
 import models.Pieza;
 import models.Pintura;
@@ -17,24 +21,43 @@ public class RegistroSubasta {
 	
 	
 	
+<<<<<<< HEAD
 	public void dataBaseAgregar(int idPieza, int fechaCreacion,String Nombre , String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
+=======
+	public void dataBaseAgregar(int idPieza, Date date, String lugarCreacion, Autor autor, String tipo, String string, String dimensiones, String materiales, boolean necesitaElectricidad, Date date2, Date date3) {
+>>>>>>> 6d705fc1417818104609c9017221917e284255fb
 		try {
 			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); 
 			PreparedStatement pst = connector.prepareStatement("INSERT INTO objects (idPieza, fechaCreacion, lugarCreacion, autor, tipo, estado, dimensiones, materiales, necesitaElectricidad, fechaIngresa, fechaVenta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			
 			pst.setInt(1, idPieza);
+<<<<<<< HEAD
 			pst.setString(2, Nombre);
 	        pst.setInt(2, fechaCreacion);
+=======
+	        pst.setDate(2, (java.sql.Date) date);
+>>>>>>> 6d705fc1417818104609c9017221917e284255fb
 	        pst.setString(3, lugarCreacion);
 	        pst.setString(4, autor);
 	        pst.setString(5, tipo);
-	        pst.setInt(6, estado);
+	        pst.setString(6, string);
 	        pst.setString(7, dimensiones);
 	        pst.setString(8, materiales);
 	        pst.setBoolean(9, necesitaElectricidad);
-	        pst.setString(10, fechaIngresa);
-	        pst.setString(11, fechaVenta);
+	        pst.setDate(10, (java.sql.Date) date2);
+	        pst.setDate(11, (java.sql.Date) date3);
+
+			
+
+
+
+
+
+
+
+
+	        
 			
 			
 			pst.executeUpdate();	
@@ -75,9 +98,9 @@ public class RegistroSubasta {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-            	Pieza objeto = new Pieza();
+            	Pieza objeto = new Pieza(idPieza, false, null, null, idPieza, null, null);
                 objeto.setIdPieza(rs.getInt("idPieza"));
-                objeto.setFechaCreacion(rs.getInt("fechaCreacion"));
+                objeto.setFechaCreacion(rs.getDate("fechaCreacion"));
                 objeto.setLugarCreacion(rs.getString("lugarCreacion"));
                 objeto.setAutor(rs.getString("autor"));
                 objeto.setTipo(rs.getString("tipo"));
@@ -85,8 +108,8 @@ public class RegistroSubasta {
                 objeto.setDimensiones(rs.getString("dimensiones"));
                 objeto.setMateriales(rs.getString("materiales"));
                 objeto.setNecesitaElectricidad(rs.getBoolean("necesitaElectricidad"));
-                objeto.setFechaIngresa(rs.getString("fechaIngresa"));
-                objeto.setFechaVenta(rs.getString("fechaVenta"));
+                objeto.setFechaIngresa(rs.getDate("fechaIngresa"));
+                objeto.setFechaVenta(rs.getDate("fechaVenta"));
                 
                 resultados.add(objeto);
             }

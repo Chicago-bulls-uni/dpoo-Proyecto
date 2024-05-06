@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import enums.EstadoPieza;
@@ -15,6 +16,23 @@ public class Pieza {
 	private String lugarCreacion;
 	private EstadoPieza estadoPieza;
 	
+	private Date fechaCreacion;
+	private String tipo;
+    private String estado;
+    private String dimensiones;
+    private ArrayList<String> materiales;
+    private boolean necesitaElectricidad;
+    private Date fechaIngresa;
+    private Date fechaVenta;
+
+    
+	
+	
+	
+	
+	
+	// faltan atrib TODO
+	
 	public Pieza(int idPiezaP, boolean bloqueadaP, Autor autorP, String tituloP, int anioP, String lugarCreacionP, String tipoPiezaP) {
 		
 		this.idPieza= idPiezaP;
@@ -23,7 +41,96 @@ public class Pieza {
 		this.titulo= tituloP;
 		this.anio= anioP;
 		this.lugarCreacion=lugarCreacionP;
+        this.fechaCreacion = fechaCreacion;
+
+		 this.tipo = tipo;
+	     this.estado = estado;
+	     this.dimensiones = dimensiones;
+	     this.materiales = materiales;
+	     this.necesitaElectricidad = necesitaElectricidad;
+	     this.fechaIngresa = fechaIngresa;
+	     this.fechaVenta = fechaVenta;
 		
+	}
+
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+	public String getDimensiones() {
+		return dimensiones;
+	}
+
+
+	public void setDimensiones(String dimensiones) {
+		this.dimensiones = dimensiones;
+	}
+
+
+	public ArrayList<String> getMateriales() {
+		return materiales;
+	}
+
+
+	public void setMateriales(ArrayList<String> materiales) {
+		this.materiales = materiales;
+	}
+
+
+	public boolean isNecesitaElectricidad() {
+		return necesitaElectricidad;
+	}
+
+
+	public void setNecesitaElectricidad(boolean necesitaElectricidad) {
+		this.necesitaElectricidad = necesitaElectricidad;
+	}
+
+
+	public Date getFechaIngresa() {
+		return fechaIngresa;
+	}
+
+
+	public void setFechaIngresa(Date fechaIngresa) {
+		this.fechaIngresa = fechaIngresa;
+	}
+
+
+	public Date getFechaVenta() {
+		return fechaVenta;
+	}
+
+
+	public void setFechaVenta(Date fechaVenta) {
+		this.fechaVenta = fechaVenta;
 	}
 
 

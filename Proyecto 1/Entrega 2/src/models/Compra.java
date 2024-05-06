@@ -64,6 +64,7 @@ public class Compra {
 
 	public void setMetodoPago(MetodoPago metodoPago) {
 		this.metodoPago = metodoPago;
+		
 	}
 
 	public void setMonto(double monto) {
