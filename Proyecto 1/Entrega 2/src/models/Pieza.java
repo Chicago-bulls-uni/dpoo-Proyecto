@@ -20,37 +20,79 @@ public class Pieza {
 	private String tipo;
     private String estado;
     private String dimensiones;
-    private ArrayList<String> materiales;
-    private boolean necesitaElectricidad;
-    private Date fechaIngresa;
-    private Date fechaVenta;
-
     
-	
-	
-	
-	
-	
-	// faltan atrib TODO
-	
-	public Pieza(int idPiezaP, boolean bloqueadaP, Autor autorP, String tituloP, int anioP, String lugarCreacionP, String tipoPiezaP) {
+    
+public Pieza(int idPiezaP, boolean bloqueadaP, Autor autorP, String tituloP, int anioP, String lugarCreacionP, String tipoPiezaP, Date fechaCreacion, String tipo, String dimensiones) {
 		
 		this.idPieza= idPiezaP;
-		this.bloqueada=bloqueadaP;
-		this.autor= autorP;
-		this.titulo= tituloP;
-		this.anio= anioP;
-		this.lugarCreacion=lugarCreacionP;
+        this.bloqueada=bloqueadaP;
+        this.autor= autorP;
+        this.titulo= tituloP;
+        this.anio= anioP;
+        
         this.fechaCreacion = fechaCreacion;
-
-		 this.tipo = tipo;
-	     this.estado = estado;
-	     this.dimensiones = dimensiones;
-	     this.materiales = materiales;
-	     this.necesitaElectricidad = necesitaElectricidad;
-	     this.fechaIngresa = fechaIngresa;
-	     this.fechaVenta = fechaVenta;
+        this.tipo = tipo;
+        this.dimensiones = dimensiones;
+        
 		
+	}
+    public int getIdPieza() {
+		return idPieza;
+	}
+
+
+	public void setIdPieza(int idPieza) {
+		this.idPieza = idPieza;
+	}
+
+
+	public boolean isBloqueada() {
+		return bloqueada;
+	}
+
+
+	public void setBloqueada(boolean bloqueada) {
+		this.bloqueada = bloqueada;
+	}
+
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public int getAnio() {
+		return anio;
+	}
+
+
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+
+	public String getLugarCreacion() {
+		return lugarCreacion;
+	}
+
+
+	public void setLugarCreacion(String lugarCreacion) {
+		this.lugarCreacion = lugarCreacion;
 	}
 
 
@@ -94,26 +136,6 @@ public class Pieza {
 	}
 
 
-	public ArrayList<String> getMateriales() {
-		return materiales;
-	}
-
-
-	public void setMateriales(ArrayList<String> materiales) {
-		this.materiales = materiales;
-	}
-
-
-	public boolean isNecesitaElectricidad() {
-		return necesitaElectricidad;
-	}
-
-
-	public void setNecesitaElectricidad(boolean necesitaElectricidad) {
-		this.necesitaElectricidad = necesitaElectricidad;
-	}
-
-
 	public Date getFechaIngresa() {
 		return fechaIngresa;
 	}
@@ -133,70 +155,20 @@ public class Pieza {
 		this.fechaVenta = fechaVenta;
 	}
 
+	private Date fechaIngresa;
+    private Date fechaVenta;
 
-	public int getIdPieza() {
-		return idPieza;
-	}
-
-
-	public boolean isBloqueada() {
-		return bloqueada;
-	}
-
-
-	public Autor getAutor() {
-		return autor;
-	}
-
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-
-	public int getAnio() {
-		return anio;
-	}
-
-
-	public String getLugarCreacion() {
-		return lugarCreacion;
-	}
-
-
+    
+	
+	
+	
+	
+	
+	// faltan atrib TODO
+	
 	
 
 
-	public void setIdPieza(int idPieza) {
-		this.idPieza = idPieza;
-	}
-
-
-	public void setBloqueada(boolean bloqueada) {
-		this.bloqueada = bloqueada;
-	}
-
-
-	public void setAutor(Autor autor) {
-		this.autor = autor;
-	}
-
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-
-	public void setAnio(int anio) {
-		this.anio = anio;
-	}
-
-
-	public void setLugarCreacion(String lugarCreacion) {
-		this.lugarCreacion = lugarCreacion;
-	}
-
-	
 	//TODO
 	 public List<Pieza> obtenerPiezasExhibidas(){
 		return null;
