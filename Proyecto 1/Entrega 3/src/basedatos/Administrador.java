@@ -10,12 +10,10 @@ import models.Pieza;
 public class Administrador extends Empleado{
 
     private RegistroSubasta registroSubasta;
-    private RegistroUser registroUsuario;
 
     public Administrador(int idEmpleadoP, String nombreP, Usuario usuarioP) {
         super(idEmpleadoP, nombreP, usuarioP);
         this.registroSubasta = new RegistroSubasta();
-        this.registroUsuario = new RegistroUser();
     }
 
     // TODO Agregar get y setters de Pieza
@@ -62,42 +60,25 @@ public class Administrador extends Empleado{
         );
     }
     
-    public void verificarCompradorYOferta(String usario, int oferta, int ofertaMin) {
-    	if (getNombre().equals(usario) && oferta > ofertaMin) {  
-    		System.out.println("Usuario encontrado");	
-    	}else {
-			System.out.println("Usuario no encontrado");
-    	}
+    public void verificarCompradorYOferta() {
+    	// Verificar si el usario esta dentro de la base de datos
+    	
     	
     }
     
-    public void verificarCompradorSubasta(String usuario) {
-    	// Verificar si el usuario esta dentro de la base de datos
-		if (getNombre().equals(usuario)) {
-			System.out.println("Usuario encontrado");
-		} else {
-			System.out.println("Usuario no encontrado");
-		}
+    public void verificarCompradorSubasta() {
+		// Verificar si el usuario esta dentro de la base de datos
+    	
 
 	}
 
-	public void verificarCompradorOferta(String usuario) {
+	public void verificarCompradorOferta() {
 		// Verificar si el usuario esta dentro de la base de datos
-		if (getNombre().equals(usuario)) {
-			System.out.println("Usuario encontrado");
-		} else {
-			System.out.println("Usuario no encontrado");
-		}
 
 	}
 
-	public void verificarCompradorPago(String usuario) {
+	public void verificarCompradorPago() {
 		// Verificar si el usuario esta dentro de la base de datos
-		if (getNombre().equals(usuario)) {
-			System.out.println("Usuario encontrado");
-		} else {
-			System.out.println("Usuario no encontrado");
-		}
 
 	}
 
@@ -131,8 +112,8 @@ public class Administrador extends Empleado{
 
 	}
 
-	public void verificarCompradorLimite(String idUsuario) {
-		registroUsuario.dataBaseBuscar(idUsuario);
+	public void verificarCompradorLimite() {
+		// Verificar si el usuario esta dentro de la base de datos
 
 	}
 

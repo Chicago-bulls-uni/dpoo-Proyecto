@@ -1,9 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-
-import Seguridad.Usuario;
-
 public interface IMain {
 
 	public void registrarPago();
@@ -60,6 +56,6 @@ public interface IMain {
 
 	public void setIdPiezaP(int idPiezaP);
 
-	public void setBloqueadaP(boolean bloqueada);
+	public void setBloqueadaP(boolean bloqueada
 
 }
