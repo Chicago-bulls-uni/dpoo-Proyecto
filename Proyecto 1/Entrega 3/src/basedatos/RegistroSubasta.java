@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -129,48 +130,60 @@ public class RegistroSubasta {
 			System.out.println("Registro completado: " + idPieza);
 			
            
-            }
+            
 		}catch(SQLException e) {
 			e.printStackTrace();
 			}
 		}
-	public List<Pieza> dataBaseBuscar(int idPieza) {
-        List<Pieza> resultados = new ArrayList<>();
+	
+	
 
-        try {
-            Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
-            PreparedStatement pst = connector.prepareStatement("SELECT * FROM objects WHERE idPieza = ?");
 
-            pst.setInt(1, idPieza);
+public List<Pieza> dataBaseBuscar(int idPieza) {
+    List<Pieza> resultados = new ArrayList<>();
 
-            ResultSet rs = pst.executeQuery();
+    try {
+        Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", "");
+        PreparedStatement pst = connector.prepareStatement("SELECT * FROM objects WHERE idPieza = ?");
 
-            while (rs.next()) {
-            	Pieza objeto = new Pieza(idPieza, false, null, null, idPieza, null, null);
-                objeto.setIdPieza(rs.getInt("idPieza"));
-                objeto.setFechaCreacion(rs.getDate("fechaCreacion"));
-                objeto.setLugarCreacion(rs.getString("lugarCreacion"));
-                objeto.setAutor(rs.getString("autor"));
-                objeto.setTipo(rs.getString("tipo"));
-                objeto.setEstado(rs.getInt("estado"));
-                objeto.setDimensiones(rs.getString("dimensiones"));
-                objeto.setMateriales(rs.getString("materiales"));
-                objeto.setNecesitaElectricidad(rs.getBoolean("necesitaElectricidad"));
-                objeto.setFechaIngresa(rs.getDate("fechaIngresa"));
-                objeto.setFechaVenta(rs.getDate("fechaVenta"));
-                
-                resultados.add(objeto);
-            }
+        pst.setInt(1, idPieza);
 
-            rs.close();
-            pst.close();
-            connector.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            
+
+        	Autor autor = null; 
+        	Pieza objeto = new Pieza(idPieza, null, null, false, autor, 0, null, null);
+            objeto.setIdPieza(rs.getInt("idPieza"));
+            objeto.setFechaCreacion(rs.getDate("fechaCreacion"));
+            objeto.setLugarCreacion(rs.getString("lugarCreacion"));
+            objeto.setAutor(new Autor(rs.getString("autor"), false)); 
+            objeto.setTipo(rs.getString("tipo"));
+            objeto.setEstado(rs.getString("estado")); 
+            objeto.setDimensiones(rs.getString("dimensiones"));
+            objeto.setMateriales(new ArrayList<>(Arrays.asList(rs.getString("materiales").split(",")))); 
+            objeto.setNecesitaElectricidad(rs.getBoolean("necesitaElectricidad"));
+            objeto.setFechaIngresa(rs.getDate("fechaIngresa"));
+            objeto.setFechaVenta(rs.getDate("fechaVenta"));
+
+            resultados.add(objeto);
         }
 
+        rs.close();
+        pst.close();
+        connector.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
         return resultados;
+    		}
     }
+
+
+	
+	
+	
 	
 	public void dataBaseModificar(int idPieza, int fechaCreacion, String lugarCreacion, String autor, String tipo, int estado, String dimensiones, String materiales, boolean necesitaElectricidad, String fechaIngresa, String fechaVenta) {
 	    try {
@@ -231,12 +244,12 @@ public class RegistroSubasta {
 	    }
 	}
 	
-	public static void main(String[] args) {
-		RegistroSubasta sub = new RegistroSubasta();
-		sub.dataBaseModificar(10, 20240610, "bogota", "diego", "escultura", 4, "200x200", "madera,papel,tierra", false, "20230414", "N/A");
-		sub.dataBaseBuscar(10);
-	}
-	
+	/*
+	 * public static void main(String[] args) { RegistroSubasta sub = new
+	 * RegistroSubasta(); sub.dataBaseModificar(10, 20240610, "bogota", "diego",
+	 * "escultura", 4, "200x200", "madera,papel,tierra", false, "20230414", "N/A");
+	 * sub.dataBaseBuscar(10); }
+	 */
 		
 
 }

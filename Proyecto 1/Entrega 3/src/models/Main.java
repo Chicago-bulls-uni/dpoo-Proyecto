@@ -1,6 +1,7 @@
 package models;
 
 import seguridad.Usuario;
+import basedatos.Administrador;
 import basedatos.RegistroSubasta;
 
 public class Main {

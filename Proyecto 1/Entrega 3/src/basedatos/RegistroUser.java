@@ -4,6 +4,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class RegistroUser {
@@ -24,39 +26,33 @@ public class RegistroUser {
 			e.printStackTrace();
 			}
 		}
-	public void dataBaseBuscar(String txt_user) {
-		
-		try {
-			Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", ""); // "rutaBase", "nombreBase", "passwordBase"
-			PreparedStatement pst = connector.prepareStatement("SELECT * FROM users WHERE user = ?");
-			
-			pst.setString(1, txt_user);
-			
-			ResultSet rs = pst.executeQuery();
-			
-			if (rs.next()) {
-				System.out.println("Password: " + rs.getString("password"));
-                System.out.println("Level: " + rs.getInt("level"));
-			}else {
-				System.out.println("Error registro no encontrado");
-			}
-			
-		rs.close();
-		pst.close();
-		connector.close();
-			
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-			
-		}
-		
-		
-		
-		
-		
+	public ArrayList<Object> dataBaseBuscar(String txt_user) {
+	    ArrayList<Object> userInfo = new ArrayList<>();
+	    
+	    try {
+	        Connection connector = DriverManager.getConnection("jdbc:mysql://localhost/bd_subasta", "root", "");
+	        PreparedStatement pst = connector.prepareStatement("SELECT * FROM users WHERE user = ?");
+
+	        pst.setString(1, txt_user);
+
+	        ResultSet rs = pst.executeQuery();
+
+	        if (rs.next()) {
+	            userInfo.add( txt_user);
+	            userInfo.add(rs.getString("password"));
+	            userInfo.add(rs.getInt("level"));
+	        }
+
+	        rs.close();
+	        pst.close();
+	        connector.close();
+
+	    } catch(SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return userInfo;
 	}
-	
 	public void dataBaseModificiar(String txt_user, String txt_password, int txt_level ) {
 		try {
 

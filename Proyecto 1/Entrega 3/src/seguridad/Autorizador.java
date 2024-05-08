@@ -1,5 +1,6 @@
-package Seguridad;
+package seguridad;
 
+import java.util.ArrayList;
 import basedatos.RegistroUser;
 
 //0 = comprador
@@ -8,6 +9,14 @@ import basedatos.RegistroUser;
 //3 = administrador
 
 public class Autorizador {
+	
+	private static final String REGISTRAR_INGRESO = "registrarIngreso";
+    private static final String CONFIRMAR_VENTA = "confirmarVenta";
+    private static final String CONFIRMAR_DEVOLUCION = "confirmarDevolucion";
+    private static final String REGISTRAR_OFERTA = "registrarOferta";
+    private static final String VERIFICAR_COMPRADOR = "verificarComprador";
+    private static final String ESTABLECER_MAXIMO_COMPRA = "establecerMaximoCompra";
+	
     private RegistroUser registroUser;
 
     public Autorizador() {
@@ -16,24 +25,25 @@ public class Autorizador {
 
     public boolean tienePermiso(String nombreUsuario, String permiso) {
         try {
-            int nivel = registroUser.obtenerNivelUsuario(nombreUsuario);
+            ArrayList<Object> tabla = registroUser.dataBaseBuscar(nombreUsuario);
+            int nivel = (int) tabla.get(2);
             
             switch (permiso) {
-                case "registrarIngreso":
-                case "confirmarVenta":
-                case "confirmarDevolucion":
-                    return nivel >= 3; 
-                case "registrarOferta":
-                    return nivel >= 2; 
-                case "verificarComprador":
-                case "establecerMaximoCompra":
-                    return nivel >= 3; 
-                default:
-                    return true; 
+            case REGISTRAR_INGRESO:
+            case CONFIRMAR_VENTA:
+            case CONFIRMAR_DEVOLUCION:
+            case VERIFICAR_COMPRADOR:
+            case ESTABLECER_MAXIMO_COMPRA:
+                return nivel >= 3;
+            case REGISTRAR_OFERTA:
+                return nivel >= 2;
+            default:
+                return true;
+        
             }
         } catch (Exception e) {
             System.out.println("Error al verificar permiso: " + e.getMessage());
-            return false;
         }
+        return false;
     }
 }

@@ -56,6 +56,6 @@ public interface IMain {
 
 	public void setIdPiezaP(int idPiezaP);
 
-	public void setBloqueadaP(boolean bloqueada
+	public void setBloqueadaP(boolean bloqueada);
 
 }

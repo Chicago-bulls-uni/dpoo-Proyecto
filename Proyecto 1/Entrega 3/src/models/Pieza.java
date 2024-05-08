@@ -17,24 +17,13 @@ public class Pieza {
 	private int anio;
 	private String lugarCreacion;
 	private EstadoPieza estadoPieza;
-	
 	private Date fechaCreacion;
-	
-    
     private String dimensiones;
     private ArrayList<String> materiales;
     private boolean necesitaElectricidad;
     private Date fechaIngresa;
     private Date fechaVenta;
 
-    
-	
-	
-	
-	
-	
-	
-	
     public Pieza(int idPiezaP,String nombre, String tipo, boolean bloqueadaP, Autor autorP,  int anioP, String lugarCreacionP, Date fechaIngresa) {
 
         this.idPieza= idPiezaP;

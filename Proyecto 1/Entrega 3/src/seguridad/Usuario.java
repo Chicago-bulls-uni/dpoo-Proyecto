@@ -1,6 +1,5 @@
-package Seguridad;
+package seguridad;
 
-import basedatos.RegistroUser;
 
 public class Usuario {
     private String nombreUsuario;
@@ -24,25 +23,7 @@ public class Usuario {
     public int getNivel() {
         return nivel;
     }
-
-    public void crearUsuario() {
-        RegistroUser registroUser = new RegistroUser();
-        registroUser.dataBaseAgregar(nombreUsuario, contrasena, nivel);
-    }
-
-    public void eliminarUsuario() {
-        RegistroUser registroUser = new RegistroUser();
-        registroUser.dataBaseEliminar(nombreUsuario);
-    }
-
-    public void modificarNivel(int nuevoNivel) {
-        RegistroUser registroUser = new RegistroUser();
-        registroUser.dataBaseModificiar(nombreUsuario, contrasena, nuevoNivel);
-    }
-
-    public void autenticar() {
-        RegistroUser registroUser = new RegistroUser();
-        registroUser.dataBaseBuscar(nombreUsuario);
-        registroUser.autenticar(nombreUsuario, contrasena);
-    }
 }
+// No tiene sentido crear metodos aqui por que ya estan en gestorUsuarios
+
+   

@@ -2,21 +2,23 @@ package models;
 
 import seguridad.Usuario;
 
-public class Cajero extends Empleado{
-
-	public Cajero(int idEmpleadoP, String nombreP, Usuario usuarioP) {
-		super(idEmpleadoP, nombreP, usuarioP);
-		// TODO Auto-generated constructor stub
-	}
+/**
+ * Represents a cashier in the system.
+ */
+public class Cajero extends Empleado {
 	
-	public boolean registrarPago() {
-		
-		if () {
-			return true;
-			
-		}else {
-			return false;}
-	}
+    public Cajero(int idEmpleadoP, String nombreP, Usuario usuarioP) {
+        super(idEmpleadoP, nombreP, usuarioP);
+    }
+
+   
+    public boolean registrarPago(int cPago) {
+        if (cPago != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 	//+ Cajero ()
 	//+ registrarPago()
 

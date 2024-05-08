@@ -1,9 +1,10 @@
-//Para autenticar que el usuario coincide con su contraseña 
-package Seguridad;
+package seguridad;
 
+import java.util.ArrayList;
 import basedatos.RegistroUser;
 
 public class Autenticador {
+
     private RegistroUser registroUser;
 
     public Autenticador() {
@@ -11,12 +12,17 @@ public class Autenticador {
     }
 
     public boolean autenticar(String nombreUsuario, String contrasena) {
+        if (nombreUsuario == null || nombreUsuario.isEmpty() || contrasena == null || contrasena.isEmpty()) {
+            throw new IllegalArgumentException("Nombre de usuario y contraseña no pueden ser nulos o vacíos");
+        }
         try {
-            String password = registroUser.obtenerContrasenaUsuario(nombreUsuario);
-            return password.equals(contrasena);
+            ArrayList<Object> password = registroUser.dataBaseBuscar(nombreUsuario);
+            if (password != null && password.size() > 1 && password.get(1).equals(contrasena)) {
+                return true;
+            }
         } catch (Exception e) {
             System.out.println("Error al autenticar: " + e.getMessage());
-            return false;
         }
+        return false;
     }
 }

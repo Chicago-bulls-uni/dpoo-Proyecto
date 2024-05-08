@@ -1,5 +1,14 @@
+package seguridad;
+
 import basedatos.RegistroUser;
+
 public class GestorUsuarios {
+
+    private static final String ADMINISTRADOR = "administrador";
+    private static final String OPERADOR = "operador";
+    private static final String CAJERO = "cajero";
+    private static final String COMPRADOR = "comprador";
+
     private RegistroUser registroUser;
 
     public GestorUsuarios() {
@@ -7,34 +16,39 @@ public class GestorUsuarios {
     }
 
     public void crearUsuario(String nombreUsuario, String contrasena, int nivel) {
+        if (nombreUsuario == null || nombreUsuario.isEmpty()) {
+            throw new IllegalArgumentException("Nombre de usuario no puede ser nulo o vacío");
+        }
         registroUser.dataBaseAgregar(nombreUsuario, contrasena, nivel);
     }
 
-    public boolean autenticarUsuario(String nombreUsuario, String contrasena) {
-        return registroUser.autenticarUsuario(nombreUsuario, contrasena);
-    }
-
-    public boolean asignarNivel(String nombreUsuario, String rol) {
+    public void asignarNivel(String nombreUsuario, String rol) {
+        if (nombreUsuario == null || nombreUsuario.isEmpty() || rol == null || rol.isEmpty()) {
+            throw new IllegalArgumentException("Nombre de usuario y rol no pueden ser nulos o vacíos");
+        }
         int nivel = obtenerNivelPorRol(rol);
-        return registroUser.dataBaseModificiar(nombreUsuario, null, nivel);
+        registroUser.dataBaseModificiar(nombreUsuario, null, nivel);
     }
 
-    public boolean eliminarUsuario(String nombreUsuario) {
-        return registroUser.dataBaseEliminar(nombreUsuario);
+    public void eliminarUsuario(String nombreUsuario) {
+        if (nombreUsuario == null || nombreUsuario.isEmpty()) {
+            throw new IllegalArgumentException("Nombre de usuario no puede ser nulo o vacío");
+        }
+        registroUser.dataBaseEliminar(nombreUsuario);
     }
 
     private int obtenerNivelPorRol(String rol) {
         switch (rol.toLowerCase()) {
-            case "administrador":
+            case ADMINISTRADOR:
                 return 3;
-            case "operador":
+            case OPERADOR:
                 return 2;
-            case "cajero":
+            case CAJERO:
                 return 1;
-            case "comprador":
+            case COMPRADOR:
                 return 0;
             default:
-                return -1; 
+                throw new IllegalArgumentException("Rol desconocido: " + rol);
         }
     }
 }
