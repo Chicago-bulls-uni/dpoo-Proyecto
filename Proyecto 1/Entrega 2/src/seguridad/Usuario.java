@@ -1,4 +1,4 @@
-package Seguridad;
+package seguridad;
 
 import basedatos.RegistroUser;
 
