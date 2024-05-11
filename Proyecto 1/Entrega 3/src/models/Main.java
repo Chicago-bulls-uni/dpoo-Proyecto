@@ -28,7 +28,7 @@ public class Main {
 		// El operador revisa lo ofrecido y si es mayor a al precio mminimo de la pieza añade //TODO
 		// Pago //TODO
 		
-		cajero.registrarPago(); // Dentro de registrar pago confirmar esta venta al administrador TODO
+		cajero.registrarPago(1); // Dentro de registrar pago confirmar esta venta al administrador TODO
 		admin.retiroPiezaInventario(0);
 		
 		// Fin de la subasta //TODO

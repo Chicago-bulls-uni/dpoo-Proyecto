@@ -31,6 +31,10 @@ public class testLogin {
 
         if (logeado) {
             System.out.println("Usuario logeado exitosamente.");
+            // ahora dependiedno del nivel debe ir a diferentes pantallas/menus o ejecutar diferentes acciones
+            // por ahora solo imprimimos el mensaje
+            
+            
         } else {
             System.out.println("Usuario no logeado. Número máximo de intentos alcanzado.");
             scanner.close();
@@ -41,7 +45,7 @@ public class testLogin {
 	
 		
 		
-		public static boolean loginUser(Scanner scanner) {
+		public static boolean loginUser(Scanner scanner) { //Esto debe ponerse en autenticador
 			
 			System.out.println("Introduce el nombre de usuario: ");
 			String nombreUsuario = scanner.nextLine();
@@ -49,10 +53,8 @@ public class testLogin {
 			String contrasena = scanner.nextLine();
 			
             if (autenticador.autenticar(nombreUsuario, contrasena)) {
-                System.out.println("Autenticación exitosa");
                 return true;
             } else {
-                System.out.println("Autenticación fallida");
                 return false;
             }
 		

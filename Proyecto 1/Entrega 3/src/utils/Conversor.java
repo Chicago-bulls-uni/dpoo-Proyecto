@@ -1,5 +1,6 @@
 package utils;
 
+
 public class Conversor {
 	
     public static int stringAEntero(String cadena) {
