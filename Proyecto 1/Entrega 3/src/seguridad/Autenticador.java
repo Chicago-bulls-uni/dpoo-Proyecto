@@ -11,7 +11,7 @@ public class Autenticador {
         this.registroUser = new RegistroUser();
     }
 
-    public boolean autenticar(String nombreUsuario, String contrasena) {
+    public  boolean autenticar(String nombreUsuario, String contrasena) {
         if (nombreUsuario == null || nombreUsuario.isEmpty() || contrasena == null || contrasena.isEmpty()) {
             throw new IllegalArgumentException("Nombre de usuario y contraseña no pueden ser nulos o vacíos");
         }

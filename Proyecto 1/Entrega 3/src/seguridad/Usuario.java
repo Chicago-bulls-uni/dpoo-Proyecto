@@ -6,7 +6,7 @@ public class Usuario {
     private String contrasena;
     private int nivel;
 
-    public Usuario(String nombreUsuario, String contrasena, int nivel) {
+    public Usuario(String nombreUsuario, String contrasena, int nivel) { //Nombre de usario es el id
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.nivel = nivel;

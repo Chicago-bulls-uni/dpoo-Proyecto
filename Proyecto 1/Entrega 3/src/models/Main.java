@@ -19,7 +19,7 @@ public class Main {
 		admin.registroPiezaInventario(1, 1, "Bogota", "Juan", "Pintura", 1, "20x20", "Pintura", false, "2021-06-01", "2021-06-01");
 		galeria.setSubasta(0, 0); // Fecha inicio de subasta y fecha fin de subasta
 		// Registrar usarios //TODO
-		galeria.getSubasta(); // Obtiene las subasta o subastas que se han registrado
+		galeria.setSubasta(0, 0);; // Obtiene las subasta o subastas que se han registrado
 		
 		// Inicio de la subasta
 		// Los usarios pueden ofertar por la pieza si estan registrados (verficardos) //TODO

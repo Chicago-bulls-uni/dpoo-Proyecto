@@ -11,8 +11,8 @@ public class Administrador extends Empleado{
 
     private RegistroSubasta registroSubasta;
 
-    public Administrador(int idEmpleadoP, String nombreP, Usuario usuarioP) {
-        super(idEmpleadoP, nombreP, usuarioP);
+    public Administrador(Usuario usuarioP) {
+        super(usuarioP);
         this.registroSubasta = new RegistroSubasta();
     }
 

@@ -99,13 +99,7 @@ public class RegistroUser {
 		
 		
 	}
-	public static void main(String[] args) {
-		RegistroUser us = new RegistroUser();
-		us.dataBaseAgregar("seb", "0a7p0", 1);
-		us.dataBaseBuscar("seb");
-		us.dataBaseModificiar("seb", "paco", 0);
-		us.dataBaseBuscar("seb");
-	}
+	
 	
 
 }
