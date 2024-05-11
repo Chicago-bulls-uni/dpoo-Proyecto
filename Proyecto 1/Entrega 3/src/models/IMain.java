@@ -1,5 +1,9 @@
 package models;
 
+import java.util.ArrayList;
+
+import seguridad.Usuario;
+
 public interface IMain {
 
 	public void registrarPago();
