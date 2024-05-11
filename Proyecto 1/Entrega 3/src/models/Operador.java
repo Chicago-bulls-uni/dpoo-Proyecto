@@ -4,19 +4,22 @@ import seguridad.Usuario;
 
 public class Operador extends Empleado{
 
-	public Operador(int idEmpleadoP, String nombreP, Usuario usuarioP) {
-		super(idEmpleadoP, nombreP, usuarioP);
+	public Operador( Usuario usuarioP) {
+		super(usuarioP);
 		
-		this.setIdEmpleado(idEmpleadoP);
-		this.setNombre(nombreP);
-		this.setUsuario(usuarioP);
+		this.setIdEmpleado(usuarioP);
 	}
 	
 	public void registrarMovimientosSubasta() {
-		//TODO
+		
+    }
 
+	
+	
+	
+	
 	}
 	
 		
 
-}
+

@@ -66,7 +66,7 @@ public class ITestLogin extends JFrame implements ActionListener {
                     dispose(); //intentos maximos
                 }
             }
-
+            
             if (logeado) {
                 JOptionPane.showMessageDialog(this, "Usuario logeado exitosamente.");
                 
