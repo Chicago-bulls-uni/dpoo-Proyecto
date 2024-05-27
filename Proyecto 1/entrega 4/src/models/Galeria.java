@@ -160,10 +160,10 @@ public class Galeria {
 	}
 
     
-	private void registrarCompraEnHistorial(Comprador comprador, Compra compra) {
+	public void registrarCompraEnHistorial(Comprador comprador, Compra compra) {
 	    Date fechaActual = new Date(ContadorSub);
 	   //FECHA ACTUAL TIENE QUE SER INT
-	    comprador.getComprasRealizadas().add(fechaActual, compra);
+	    comprador.getComprasRealizadas().put(fechaActual, compra);
 	}
 	public  void anadiraOfertasTransitorias(Oferta offer) {
         this.HistorialofertasTransitorias.add(offer);

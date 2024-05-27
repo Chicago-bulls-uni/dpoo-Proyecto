@@ -3,7 +3,7 @@ package seguridad;
 import models.Galeria;
 
 public class Usuario {
-	private static Galeria galeria;
+	protected static Galeria galeria;
     private String nombreUsuario;
     private String contrasena;
     private int nivel;

@@ -30,7 +30,7 @@ public class Comprador extends Usuario {
 		this.verificado=false;
 		this.setLimiteCompra(limiteCompraP);
 		this.setVerificado(verificadoP);
-		this.billetera = billeteraP;
+		this.billetera = billetera;
 	
 	}
 	

@@ -78,7 +78,7 @@ public class Billetera {
         }
     }
 
-    private void agregarTransaccionExitosa(double monto, Pieza pieza) {
+    public void agregarTransaccionExitosa(double monto, Pieza pieza) {
         transaccionesExitosas.put(pieza, monto);
     }
 
