@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.text.SimpleDateFormat;
 
 import enums.MetodoPago;
 import seguridad.Usuario;
@@ -106,9 +107,10 @@ public class Comprador extends Usuario {
 		this.verificado = verificado;
 	}
 	
-	public void comprarPieza(Pieza pieza, MetodoPago metodoPago) {
-        galeria.realizarCompraDirecta(this, pieza, metodoPago);
-    }
+	public void comprarPieza(int idPieza, MetodoPago metodoPago) {
+	    Galeria galeria = Usuario.getGaleria();
+	    galeria.realizarCompraDirecta(this, idPieza, metodoPago);
+	}
 	
 	//IMPLEMENTAR ESTE METODO
 	public boolean realizarPago(MetodoPago metodoDePago, double montoAPagar, Pieza pieza) {
@@ -124,4 +126,14 @@ public class Comprador extends Usuario {
 	
 	
 }
+	public void registrarCompraEnHistorial(Comprador comprador, Compra compra) {
+	    Date fechaActual = new Date();
+	    
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+	    String fechaFormateada = sdf.format(fechaActual);
+	   
+	    int fechaEntero = Integer.parseInt(fechaFormateada);
+	    
+	    this.getComprasRealizadas().put(fechaEntero, compra);
+	}
 }

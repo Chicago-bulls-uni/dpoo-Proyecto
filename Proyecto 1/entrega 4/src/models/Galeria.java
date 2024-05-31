@@ -124,47 +124,50 @@ public class Galeria {
 	
 	
 	
-	public void realizarCompraDirecta(Comprador comprador, Pieza pieza, MetodoPago metodoDePago) {
-	    Administrador admin = this.getAdministrador();
-	    admin.verificarCompradorVerificar(comprador.getNombre());
-	    
-	    if (!pieza.isBloqueada()) {
-	        if (comprador.isVerificado()) {
-	            double montoAPagar = pieza.getPrecio();
-	            
-	            if (comprador.getLimiteCompra() < montoAPagar) {
-	                System.out.println("El límite de compra del comprador no es suficiente para pagar esta pieza.");
-	                admin.actualizarLimiteCompras(comprador, montoAPagar);
-	            }
-	            
-	            Compra compra = new Compra(pieza.getIdPieza(), pieza, comprador, new Date(), metodoDePago, montoAPagar);
-	            
-	            // Realizar el pago antes de registrar la compra
-	            if (comprador.realizarPago(metodoDePago, montoAPagar, pieza)) {
-	                cajero.registrarCompra(compra);
-	                pieza.setEstadoPieza(EstadoPieza.VENDIDO);
-	                pieza.setBloqueada(true);
-	                // Llamar al método venderPieza del propietario de la pieza
-	                pieza.getPropietario().venderPieza(pieza, monto); // COMO OBTENER EL PROPIETARIO?
-	                registrarCompraEnHistorial(comprador, compra);
-	                System.out.println("Compra realizada con éxito.");
+	public void realizarCompraDirecta(Comprador comprador, int idPieza, MetodoPago metodoDePago) {
+	    Pieza pieza = null;
+	    List<Pieza> piezasEnVenta = inventary.obtenerPiezasEnVenta();
+	    for (Pieza p : piezasEnVenta) {
+	        if (p.getIdPieza() == idPieza) {
+	            pieza = p;
+	            break;
+	        }
+	    }
+
+	    if (pieza != null) {
+	        if (!pieza.isBloqueada()) {
+	            if (comprador.isVerificado()) {
+	                double montoAPagar = pieza.getPrecio();
+	                if (comprador.getLimiteCompra() < montoAPagar) {
+	                    System.out.println("El límite de compra del comprador no es suficiente para pagar esta pieza.");
+	                } else {
+	                    Compra compra = new Compra(List.of(pieza), comprador.getNombre(), new Date(), metodoDePago, montoAPagar);
+	                    if (comprador.realizarPago(metodoDePago, montoAPagar, pieza)) {
+	                        controllerCompras(compra);
+	                        comprador.registrarCompraEnHistorial(comprador, compra);
+	                        pieza.setEstadoPieza(EstadoPieza.VENDIDO);
+	                        pieza.setBloqueada(true);
+	                        String propietario = pieza.getPropietario();
+	                        mapaCompradores.get(propietario).getbilletera().agregarSaldo(montoAPagar);//Se le consigna el dinero al propietario
+	                        historialVentasDirectas.add(compra); // Se añade al historial de la Galería
+	                        System.out.println("Compra realizada con éxito.");
+	                    } else {
+	                        System.out.println("La compra no pudo ser procesada debido a un problema con el pago.");
+	                    }
+	                }
 	            } else {
-	                System.out.println("La compra no pudo ser procesada debido a un problema con el pago.");
+	                System.out.println("El comprador no está autorizado para realizar compras.");
 	            }
 	        } else {
-	            System.out.println("El comprador no está autorizado para realizar compras.");
+	            System.out.println("La pieza seleccionada ya ha sido vendida.");
 	        }
 	    } else {
-	        System.out.println("La pieza seleccionada ya ha sido vendida.");
+	        System.out.println("La pieza con el ID especificado no se encontró o no está disponible para la venta.");
 	    }
 	}
 
     
-	public void registrarCompraEnHistorial(Comprador comprador, Compra compra) {
-	    Date fechaActual = new Date(ContadorSub);
-	   //FECHA ACTUAL TIENE QUE SER INT
-	    comprador.getComprasRealizadas().put(fechaActual, compra);
-	}
+	
 	public  void anadiraOfertasTransitorias(Oferta offer) {
         this.HistorialofertasTransitorias.add(offer);
 	}
